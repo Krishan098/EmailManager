@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Email Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen scroll-smooth">
+    <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-xl mb-10 mt-10" id="form-section">
+      <h1 class="text-2xl font-semibold mb-6 text-gray-800 text-center">
+        ✉️ AI Email Generator
+      </h1>
+
+      <form id="emailForm" class="space-y-6">
+        <!-- Recipient Email -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Recipient Email
+          </label>
+          <input
+            id="recipient"
+            type="email"
+            placeholder="recipient@example.com"
+            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            required
+          />
+        </div>
+
+        <!-- Email Prompt -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Email Prompt
+          </label>
+          <textarea
+            id="prompt"
+            placeholder="Describe what you want to write..."
+            rows="4"
+            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Generate Button -->
+        <button
+          type="submit"
+          class="w-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-semibold py-2 rounded-lg hover:opacity-90 transition"
+        >
+          Generate Email
+        </button>
+      </form>
+    </div>
+
+    <!-- Hidden Generated Email Section -->
+    <div
+      id="generatedSection"
+      class="hidden bg-white rounded-2xl shadow-xl p-8 w-full max-w-xl mb-10"
+    >
+      <h2 class="text-lg font-semibold text-gray-700 mb-3">To</h2>
+      <input
+        id="generatedTo"
+        type="text"
+        readonly
+        class="w-full bg-gray-100 rounded-lg px-4 py-2 mb-4 text-gray-700 border border-gray-200"
+      />
+
+      <h2 class="text-lg font-semibold text-gray-700 mb-2">Generated Email</h2>
+      <div class="bg-gray-50 p-5 rounded-xl border border-gray-200 mb-6">
+        <p id="generatedEmail" class="text-gray-700 whitespace-pre-line"></p>
+      </div>
+
+      <button
+        class="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition"
+      >
+        Send Email
+      </button>
+    </div>
+
+    <script>
+      const form = document.getElementById("emailForm");
+      const generatedSection = document.getElementById("generatedSection");
+      const generatedEmail = document.getElementById("generatedEmail");
+      const generatedTo = document.getElementById("generatedTo");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const recipient = document.getElementById("recipient").value;
+        const prompt = document.getElementById("prompt").value;
+
+        // Simulate generated email text
+        const emailText = `Dear ${recipient.split("@")[0]},\n\nI hope this email finds you well.\n\n${prompt}\n\nI look forward to hearing from you soon.\n\nBest regards,`;
+
+        generatedTo.value = recipient;
+        generatedEmail.textContent = emailText;
+
+        // Show section & scroll
+        generatedSection.classList.remove("hidden");
+        generatedSection.scrollIntoView({ behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>
