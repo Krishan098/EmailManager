@@ -149,7 +149,7 @@ When handling emails, follow these steps:
 
 # Default background information 
 default_background = """ 
-I'm Lance, a software engineer at LangChain.
+I'm Krishan, a Machine Learning student.
 """
 
 # Default response preferences 
@@ -172,8 +172,10 @@ When responding to collaboration or project-related requests:
 - When scheduling meetings, clearly state the specific day, date, and time proposed
 
 When responding to meeting scheduling requests:
-- If times are proposed, verify calendar availability for all time slots mentioned in the original email and then commit to one of the proposed times based on your availability by scheduling the meeting. Or, say you can't make it at the time proposed.
-- If no times are proposed, then check your calendar for availability and propose multiple time options when available instead of selecting just one.
+- If times are proposed, verify calendar availability for all time slots mentioned in the original email and then IMMEDIATELY use schedule_meeting_tool to schedule at one of the available times. This is MANDATORY - you MUST schedule the meeting, not just reply. Or, if none of the times work, say you can't make it at the times proposed.
+- After checking the availability call the schedule_meeting tool to fix that meet on the calendar.
+- After scheduling, send a brief confirmation email mentioning the scheduled time.
+- If no times are proposed, then check your calendar for availability and propose multiple time options when available instead of selecting just one (do NOT auto-schedule in this case).
 - Mention the meeting duration in your response to confirm you've noted it correctly.
 - Reference the meeting's purpose in your response.
 """
