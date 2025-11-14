@@ -30,7 +30,7 @@ Your job is to evaluate the agent's reasoning and decision relative to the corre
 </correct_classification>
 """
 
-# Used in /tests/test_email_assistant.py
+# Used in /tests/test_email_assistant_hitl_memory_gmail.py
 RESPONSE_CRITERIA_SYSTEM_PROMPT = """You are evaluating an email assistant that works on behalf of a user.
 
 You will see a sequence of messages, starting with an email sent to the user. 

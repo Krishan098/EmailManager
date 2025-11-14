@@ -5,9 +5,9 @@ import os
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-from email_assistant.eval.email_dataset import examples_triage
+from email_assistant_hitl_memory_gmail.eval.email_dataset import examples_triage
 
-from email_assistant.email_assistant import email_assistant
+from email_assistant_hitl_memory_gmail.email_assistant import email_assistant
 
 # Client 
 client = Client()
@@ -38,7 +38,7 @@ def target_email_assistant(inputs: dict) -> dict:
         A formatted dictionary with the assistant's response messages
     """
     try:
-        response = email_assistant.invoke({"email_input": inputs["email_input"]})
+        response = email_assistant_hitl_memory_gmail.invoke({"email_input": inputs["email_input"]})
         if "classification_decision" in response:
             return {"classification_decision": response['classification_decision']}
         else:
